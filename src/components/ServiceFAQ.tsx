@@ -1,0 +1,72 @@
+"use client";
+
+/**
+ * Reusable FAQ accordion for service subpages.
+ * Single card with divider lines — same style as homepage FAQ.
+ */
+
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export function ServiceFAQ({ items }: { items: readonly FaqItem[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  if (items.length === 0) return null;
+
+  return (
+    <section className="py-16 sm:py-24">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+        <p className="text-center text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+          Vanliga funderingar
+        </p>
+        <h2 className="mt-3 text-center text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl">
+          Vanliga frågor
+        </h2>
+
+        <div className="mt-12 overflow-hidden rounded-lg border border-zinc-200 bg-white">
+          {items.map((item, index) => {
+            const isOpen = openIndex === index;
+            const isLast = index === items.length - 1;
+            return (
+              <div key={item.question}>
+                <button
+                  type="button"
+                  className="flex w-full cursor-pointer items-center justify-between gap-4 px-6 py-5 text-left text-[15px] font-medium text-zinc-900 transition-colors hover:text-[var(--accent)]"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  aria-expanded={isOpen}
+                >
+                  {item.question}
+                  <span
+                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors ${
+                      isOpen ? "bg-[var(--accent)] text-white" : "bg-zinc-100 text-zinc-500"
+                    }`}
+                  >
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                    />
+                  </span>
+                </button>
+                <div
+                  className="grid transition-all duration-200 ease-out"
+                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-6 pb-5 leading-relaxed text-zinc-600">
+                      {item.answer}
+                    </p>
+                  </div>
+                </div>
+                {!isLast && <div className="mx-6 border-t border-zinc-100" />}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

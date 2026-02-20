@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #1a1a2e;
+  --accent: #e63946;
+  --accent-light: #fce8ea;
+  --section-alt: #f8f8fa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-section-alt: var(--section-alt);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* So anchor targets (e.g. #tjanster, #om-oss) sit below the sticky header */
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
