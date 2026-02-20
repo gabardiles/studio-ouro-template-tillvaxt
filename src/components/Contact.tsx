@@ -3,13 +3,16 @@
 /**
  * Contact – Google Maps embed, contact info rows, optional form.
  * All content from client.config.ts.
+ * Each field renders only when not null or empty string.
  */
 
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, BellRing, Check } from "lucide-react";
 import { client } from "../../client.config";
 
-const telHref = `tel:${client.contact.phone.replace(/[\s-]/g, "")}`;
+function hasValue(v: string | null | undefined): v is string {
+  return v != null && v.trim() !== "";
+}
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -32,8 +35,8 @@ export function Contact() {
         <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left column: map + contact info */}
           <div className="space-y-8">
-            {/* Google Maps */}
-            {client.contact.mapUrl && (
+            {/* Google Maps embed */}
+            {hasValue(client.contact.mapUrl) && (
               <div className="overflow-hidden rounded-lg border border-zinc-200 shadow-sm">
                 <iframe
                   src={client.contact.mapUrl}
@@ -51,19 +54,22 @@ export function Contact() {
 
             {/* Contact rows */}
             <div className="space-y-5">
-              {client.contact.phone ? (
-                <a href={telHref} className="flex items-start gap-4 transition-colors hover:text-[var(--accent)]">
+              {hasValue(client.contact.phone) && (
+                <a
+                  href={`tel:${client.contact.phone!.replace(/[\s-]/g, "")}`}
+                  className="flex items-start gap-4 transition-colors hover:text-[var(--accent)]"
+                >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-zinc-100 text-zinc-600">
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-zinc-500">Telefon</p>
-                    <p className="font-medium text-zinc-900">{client.contact.phone}</p>
+                    <p className="text-xl font-semibold text-zinc-900">{client.contact.phone}</p>
                   </div>
                 </a>
-              ) : null}
+              )}
 
-              {client.contact.email ? (
+              {hasValue(client.contact.email) && (
                 <div className="flex items-start gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-zinc-100 text-zinc-600">
                     <Mail className="h-5 w-5" />
@@ -75,9 +81,9 @@ export function Contact() {
                     </a>
                   </div>
                 </div>
-              ) : null}
+              )}
 
-              {client.contact.address ? (
+              {hasValue(client.contact.address) && (
                 <div className="flex items-start gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-zinc-100 text-zinc-600">
                     <MapPin className="h-5 w-5" />
@@ -87,9 +93,9 @@ export function Contact() {
                     <p className="font-medium text-zinc-900">{client.contact.address}</p>
                   </div>
                 </div>
-              ) : null}
+              )}
 
-              {client.contact.hours ? (
+              {hasValue(client.contact.hours) && (
                 <div className="flex items-start gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-zinc-100 text-zinc-600">
                     <Clock className="h-5 w-5" />
@@ -99,9 +105,9 @@ export function Contact() {
                     <p className="font-medium text-zinc-900">{client.contact.hours}</p>
                   </div>
                 </div>
-              ) : null}
+              )}
 
-              {client.contact.emergency && (
+              {hasValue(client.contact.emergency) && (
                 <div className="flex items-start gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[var(--accent-light)] text-[var(--accent)]">
                     <BellRing className="h-5 w-5" />
