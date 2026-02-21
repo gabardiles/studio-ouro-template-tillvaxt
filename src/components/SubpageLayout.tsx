@@ -8,6 +8,7 @@ import { ArrowLeft, Phone } from "lucide-react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { client } from "../../client.config";
+import { getPrimaryCtaHref } from "@/lib/cta";
 
 export function SubpageLayout({
   children,
@@ -44,7 +45,7 @@ export function SubpageLayout({
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <a
-                href={client.hero.cta.primary.href}
+                href={getPrimaryCtaHref()}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-[var(--accent)]/30 transition hover:brightness-110"
               >
                 <Phone className="h-5 w-5" />

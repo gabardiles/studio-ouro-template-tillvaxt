@@ -11,6 +11,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { client } from "../../client.config";
+import { getPrimaryCtaHref } from "@/lib/cta";
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
@@ -156,7 +157,7 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <a
-            href={client.hero.cta.primary.href}
+            href={getPrimaryCtaHref()}
             className="hidden items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 lg:inline-flex"
           >
             <Phone className="h-4 w-4" />
@@ -256,7 +257,7 @@ export function Header() {
             </Link>
           </nav>
           <a
-            href={client.hero.cta.primary.href}
+            href={getPrimaryCtaHref()}
             className="mt-4 flex items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white"
             onClick={() => setOpen(false)}
           >

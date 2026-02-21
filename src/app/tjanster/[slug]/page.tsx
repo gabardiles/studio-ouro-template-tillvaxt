@@ -17,6 +17,7 @@ import Link from "next/link";
 import { ImageIcon, Phone, CheckCircle } from "lucide-react";
 import { client } from "../../../../client.config";
 import { SubpageLayout } from "@/components/SubpageLayout";
+import { getPrimaryCtaHref } from "@/lib/cta";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { ServiceFAQ } from "@/components/ServiceFAQ";
 
@@ -116,7 +117,7 @@ export default async function ServicePage({ params }: Props) {
 
             <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <a
-                href={client.hero.cta.primary.href}
+                href={getPrimaryCtaHref()}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-[var(--accent)]/30 transition hover:brightness-110"
               >
                 <Phone className="h-5 w-5" />
@@ -136,8 +137,8 @@ export default async function ServicePage({ params }: Props) {
       {/* ───── Alternating sections ───── */}
       {service.sections.map((section, i) => {
         const imageLeft = i % 2 === 0;
-        type SectionWithOptionalImage = { heading: string; body: string; image?: string | null };
-        const sectionImage: string | null = (section as SectionWithOptionalImage).image ?? null;
+        type SectionWithOptionalImage = { heading: string; body: string; readonly image?: string | null };
+        const sectionImage: string | null = (section as SectionWithOptionalImage)?.image ?? null;
         const imageBlock = sectionImage ? (
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-zinc-100 shadow-md">
             <Image

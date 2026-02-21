@@ -6,6 +6,7 @@
 import Image from "next/image";
 import { BadgeCheck, ArrowRight } from "lucide-react";
 import { client } from "../../client.config";
+import { getPrimaryCtaHref } from "@/lib/cta";
 
 export function Hero() {
   const { hero } = client;
@@ -60,7 +61,7 @@ export function Hero() {
               {hero.cta.secondary.text}
             </a>
             <a
-              href={hero.cta.primary.href}
+              href={getPrimaryCtaHref()}
               className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-white/70 transition hover:text-white"
             >
               {hero.cta.primary.text} <ArrowRight className="h-4 w-4" />

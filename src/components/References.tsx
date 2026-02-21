@@ -18,11 +18,11 @@ export function References() {
           Våra uppdrag
         </h2>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 flex flex-wrap justify-center gap-8">
           {client.references.map((ref) => (
             <article
               key={ref.title}
-              className="group overflow-hidden rounded-lg border border-zinc-100 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+              className="group w-full flex-1 overflow-hidden rounded-lg border border-zinc-100 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg sm:min-w-[280px] sm:max-w-[380px]"
             >
               {ref.image ? (
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100">
