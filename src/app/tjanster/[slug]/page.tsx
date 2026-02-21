@@ -6,7 +6,7 @@
  *   2. Two alternating text+image blocks
  *   3. Highlights – bulleted card grid
  *   4. CTA banner (from SubpageLayout)
- *
+ *   5. Comments section
  * All content from client.config.ts. Statically generated via generateStaticParams.
  */
 
