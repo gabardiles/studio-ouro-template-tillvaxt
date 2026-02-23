@@ -17,6 +17,12 @@ export const client = {
     logo: null,
     primaryColor: "#1a2e3b",   // djup marinblå — professionell, pålitlig
     accentColor: "#e8a020",    // varm amber — lokal, varm, hantverk
+    backgroundColor: "",
+    textColor: "",
+    titleFont: "Funnel Display",
+    bodyFont: "Funnel Sans",
+    mode: "light",
+    radius: "soft",
     font: "default",
   },
 

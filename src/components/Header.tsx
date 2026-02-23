@@ -7,7 +7,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { client } from "../../client.config";
@@ -69,15 +68,15 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-[72px] sm:px-6">
         <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight text-zinc-900">
           {client.brand.logo ? (
-            <Image
+            <img
               src={client.brand.logo}
               alt={client.brand.name}
-              width={140}
-              height={40}
               className="h-8 w-auto"
             />
           ) : (
-            client.brand.name
+            <span className="font-display font-bold text-xl">
+              {client.brand.name}
+            </span>
           )}
         </Link>
 

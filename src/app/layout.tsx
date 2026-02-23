@@ -1,24 +1,21 @@
 /**
  * Root layout – metadata, schema, and brand theme from client.config.ts.
- * All SEO meta tags and JSON-LD are generated from config.
+ * Design tokens (fonts, colors, radius, mode) are applied as CSS variables.
  */
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { client } from "../../client.config";
 import { getLocalBusinessSchema, getFaqSchema } from "@/lib/schema";
 import { ScrollToHash } from "@/components/ScrollToHash";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const radiusMap = {
+  none: "0px",
+  subtle: "4px",
+  rounded: "8px",
+  soft: "16px",
+  pill: "999px",
+} as const;
 
 const baseUrl = client.meta.domain ? `https://${client.meta.domain}` : null;
 
@@ -49,8 +46,22 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const primary = client.brand.primaryColor;
-  const accent = client.brand.accentColor;
+  const radius =
+    radiusMap[client.brand.radius ?? "soft"] ?? radiusMap.soft;
+  const titleFont = client.brand.titleFont ?? "Funnel Display";
+  const bodyFont = client.brand.bodyFont ?? "Funnel Sans";
+  const mode = (client.brand.mode ?? "light") as "light" | "dark";
+  const primaryColor = client.brand.primaryColor;
+  const accentColor = client.brand.accentColor;
+  const backgroundColor =
+    client.brand.backgroundColor ||
+    (mode === "dark" ? "#0a0a0a" : "#ffffff");
+  const textColor =
+    client.brand.textColor ||
+    (mode === "dark" ? "#f5f5f5" : "#111111");
+
+  const fontUrl = `https://fonts.googleapis.com/css2?family=${titleFont.replace(/ /g, "+")}:ital,wght@0,400;0,700;0,900;1,400&family=${bodyFont.replace(/ /g, "+")}:wght@300;400;500;600&display=swap`;
+
   const localBusinessSchema =
     client.schema.enabled && client.schema.localBusiness
       ? getLocalBusinessSchema()
@@ -61,16 +72,27 @@ export default function RootLayout({
   return (
     <html
       lang={client.meta.language}
+      data-mode={mode}
       style={
         {
-          "--primary": primary,
-          "--accent": accent,
+          "--primary": primaryColor,
+          "--accent": accentColor,
+          "--color-primary": primaryColor,
+          "--color-accent": accentColor,
+          "--color-background": backgroundColor,
+          "--color-text": textColor,
+          "--font-display": `'${titleFont.replace(/'/g, "\\'")}', sans-serif`,
+          "--font-body": `'${bodyFont.replace(/'/g, "\\'")}', sans-serif`,
+          "--radius": radius,
+          "--radius-sm": `calc(${radius} * 0.5)`,
+          "--radius-lg": `calc(${radius} * 1.5)`,
         } as React.CSSProperties
       }
     >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        <link href={fontUrl} rel="stylesheet" />
+      </head>
+      <body className="antialiased">
         {localBusinessSchema && (
           <script
             type="application/ld+json"
