@@ -28,7 +28,7 @@ export function Footer() {
           <div>
             <p className="text-xl font-bold text-white">{client.brand.name}</p>
             {client.footer.tagline && (
-              <p className="mt-2 max-w-xs text-sm leading-relaxed text-zinc-400">
+              <p className="mt-2 max-w-xs text-sm leading-relaxed text-zinc-300">
                 {client.footer.tagline}
               </p>
             )}
@@ -38,7 +38,7 @@ export function Footer() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-zinc-400 transition-colors hover:text-white"
+                className="text-sm font-medium text-zinc-200 transition-colors hover:text-white"
               >
                 {item.label}
               </Link>
@@ -96,7 +96,7 @@ export function Footer() {
         )}
 
         <div className="mt-10 border-t border-white/10 pt-8">
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-zinc-400">
             © {currentYear} {client.brand.name}. Alla rättigheter förbehållna.
           </p>
         </div>

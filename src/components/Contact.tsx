@@ -35,12 +35,12 @@ export function Contact() {
   return (
     <section id="kontakt" className="bg-[var(--section-alt)] py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-center text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+        <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-zinc-700">
           Hör av dig
-        </p>
-        <h2 className="mt-3 text-center text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
-          Kontakta oss
         </h2>
+        <h3 className="mt-3 text-center text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
+          Kontakta oss
+        </h3>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left column: map + contact info */}
@@ -67,7 +67,7 @@ export function Contact() {
               {hasValue(client.contact.phone) && (
                 <a
                   href={`tel:${client.contact.phone!.replace(/[\s-]/g, "")}`}
-                  className="flex items-start gap-4 transition-colors hover:text-[var(--accent)]"
+                  className="flex items-start gap-4 transition-colors hover:text-zinc-900"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-zinc-100 text-zinc-600">
                     <Phone className="h-5 w-5" />
@@ -86,7 +86,7 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-zinc-500">E-post</p>
-                    <a href={`mailto:${client.contact.email}`} className="font-medium text-zinc-900 hover:text-[var(--accent)]">
+                    <a href={`mailto:${client.contact.email}`} className="font-medium text-zinc-900 hover:text-zinc-700">
                       {client.contact.email}
                     </a>
                   </div>
@@ -124,7 +124,7 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-zinc-500">Akut</p>
-                    <p className="font-medium text-[var(--accent)]">{client.contact.emergency}</p>
+                    <p className="font-medium text-zinc-800">{client.contact.emergency}</p>
                   </div>
                 </div>
               )}
@@ -140,7 +140,7 @@ export function Contact() {
                     <Check className="h-7 w-7" />
                   </div>
                   <p className="mt-4 text-lg font-medium text-zinc-900">Tack för ditt meddelande!</p>
-                  <p className="mt-1 text-zinc-500">Vi återkommer så snart vi kan.</p>
+                  <p className="mt-1 text-zinc-600">Vi återkommer så snart vi kan.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">

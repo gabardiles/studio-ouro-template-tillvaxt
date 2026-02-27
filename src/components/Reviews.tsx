@@ -26,9 +26,9 @@ export function Reviews() {
       <div className="text-center sm:text-left">
         <p className="text-2xl font-bold text-zinc-900">
           {score}
-          <span className="text-base font-normal text-zinc-400"> / 5</span>
+          <span className="text-base font-normal text-zinc-600"> / 5</span>
         </p>
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-zinc-600">
           {count} omdömen på {client.reviews.platform}
         </p>
       </div>
@@ -58,7 +58,7 @@ export function Reviews() {
                 key={t.name}
                 className="relative rounded-lg border border-zinc-200 bg-white p-6"
               >
-                <Quote className="mb-3 h-5 w-5 text-[var(--accent)]/40" />
+                <Quote className="mb-3 h-5 w-5 text-zinc-400" />
                 <p className="leading-relaxed text-zinc-600">
                   &ldquo;{t.text}&rdquo;
                 </p>

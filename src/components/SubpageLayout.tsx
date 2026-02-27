@@ -25,7 +25,7 @@ export function SubpageLayout({
         <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-[var(--accent)]"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900"
           >
             <ArrowLeft className="h-4 w-4" />
             {backLabel}

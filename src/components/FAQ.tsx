@@ -15,12 +15,12 @@ export function FAQ() {
   return (
     <section id="faq" className="py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <p className="text-center text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+        <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-zinc-700">
           Svar på vanliga funderingar
-        </p>
-        <h2 className="mt-3 text-center text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
-          Vanliga frågor
         </h2>
+        <h3 className="mt-3 text-center text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
+          Vanliga frågor
+        </h3>
 
         <div className="mt-14 overflow-hidden rounded-lg border border-zinc-200 bg-white">
           {client.faq.map((item, index) => {
@@ -30,7 +30,7 @@ export function FAQ() {
               <div key={item.question}>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-[15px] font-medium text-zinc-900 transition-colors hover:text-[var(--accent)]"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-[15px] font-medium text-zinc-900 transition-colors hover:text-zinc-700"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
                 >

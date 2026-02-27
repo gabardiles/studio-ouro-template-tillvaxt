@@ -117,22 +117,25 @@ export function ReferencesSlider({
       {references.length > 1 && isSlider && (
         <div
           className="mt-4 flex justify-center gap-2 sm:hidden"
-          role="tablist"
+          role="group"
           aria-label="Kortpaginering"
         >
           {references.map((_, i) => (
             <button
               key={i}
               type="button"
-              role="tab"
-              aria-selected={i === activeIndex}
               onClick={() => goTo(i)}
-              aria-label={`Gå till kort ${i + 1}`}
-              className="h-2.5 w-2.5 shrink-0 rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2"
-              style={{
-                backgroundColor: i === activeIndex ? "var(--accent)" : "#a1a1aa",
-              }}
-            />
+              aria-label={`Gå till kort ${i + 1}${i === activeIndex ? ", valt" : ""}`}
+              className="flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full p-0 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2"
+            >
+              <span
+                className="h-2.5 w-2.5 rounded-full transition-colors duration-200"
+                style={{
+                  backgroundColor: i === activeIndex ? "var(--accent)" : "#a1a1aa",
+                }}
+                aria-hidden
+              />
+            </button>
           ))}
         </div>
       )}

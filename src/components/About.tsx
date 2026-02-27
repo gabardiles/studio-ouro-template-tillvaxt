@@ -17,12 +17,12 @@ export function About() {
         {/* Two-column: text + image */}
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+            <h2 className="mb-3 text-sm font-semibold uppercase tracking-widest text-zinc-700">
               Om oss
-            </p>
-            <h2 className="text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl">
-              {about.title}
             </h2>
+            <h3 className="text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl">
+              {about.title}
+            </h3>
             <p className="mt-5 text-lg leading-relaxed text-zinc-600">
               {about.body}
             </p>
@@ -34,7 +34,7 @@ export function About() {
 
             <Link
               href="/om-oss"
-              className="mt-6 inline-flex items-center gap-1.5 text-base font-medium text-[var(--accent)] transition-colors hover:brightness-110"
+              className="mt-6 inline-flex items-center gap-1.5 text-base font-medium text-zinc-700 transition-colors hover:text-zinc-900"
             >
               Läs mer om oss <ArrowRight className="h-4 w-4" />
             </Link>
@@ -71,7 +71,7 @@ export function About() {
             {about.stats.map((stat) => (
               <div key={stat.label} className="flex-1 basis-1/2 px-4 py-6 text-center sm:basis-0">
                 <p className="text-2xl font-medium text-[var(--primary)] sm:text-3xl">{stat.value}</p>
-                <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-zinc-400 sm:text-xs">{stat.label}</p>
+                <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-zinc-600 sm:text-xs">{stat.label}</p>
               </div>
             ))}
           </div>

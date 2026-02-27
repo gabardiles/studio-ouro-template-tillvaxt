@@ -13,13 +13,13 @@ export function Services() {
   return (
     <section id="tjanster" className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-center text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+        <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-zinc-700">
           Vad vi erbjuder
-        </p>
-        <h2 className="mt-3 text-center text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
-          Våra tjänster
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-center text-zinc-500">
+        <h3 className="mt-3 text-center text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
+          Våra tjänster
+        </h3>
+        <p className="mx-auto mt-4 max-w-xl text-center text-zinc-600">
           Vi erbjuder ett brett utbud av tjänster för hem och fastighet.
         </p>
 
@@ -54,7 +54,7 @@ export function Services() {
                   </>
                 )}
                 {/* Icon badge in top-left corner */}
-                <div className="absolute top-3 left-3 flex h-10 w-10 items-center justify-center rounded-md bg-white/90 text-[var(--accent)] shadow-sm backdrop-blur-sm">
+                <div className="absolute top-3 left-3 flex h-10 w-10 items-center justify-center rounded-md bg-white/90 text-zinc-700 shadow-sm backdrop-blur-sm">
                   <ServiceIcon name={service.icon} />
                 </div>
               </div>
@@ -67,7 +67,7 @@ export function Services() {
                 <p className="mt-2 text-sm leading-relaxed text-zinc-600">
                   {service.description}
                 </p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-zinc-700 opacity-0 transition-opacity group-hover:opacity-100">
                   Läs mer <ArrowRight className="h-4 w-4" />
                 </span>
               </div>

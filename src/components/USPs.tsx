@@ -9,12 +9,12 @@ export function USPs() {
   return (
     <section className="bg-[var(--primary)] py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-center text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+        <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-white/80">
           Trygga val
-        </p>
-        <h2 className="mt-3 text-center text-3xl font-medium tracking-tight text-white sm:text-4xl">
-          Varför välja oss?
         </h2>
+        <h3 className="mt-3 text-center text-3xl font-medium tracking-tight text-white sm:text-4xl">
+          Varför välja oss?
+        </h3>
 
         <div className="mt-14 grid gap-8 sm:grid-cols-3">
           {client.usps.map((usp, i) => (
@@ -25,7 +25,7 @@ export function USPs() {
               <h3 className="mt-5 text-lg font-medium text-white">
                 {usp.title}
               </h3>
-              <p className="mt-2 leading-relaxed text-zinc-300">
+              <p className="mt-2 leading-relaxed text-zinc-200">
                 {usp.description}
               </p>
             </div>

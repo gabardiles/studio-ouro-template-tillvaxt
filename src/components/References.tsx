@@ -10,12 +10,12 @@ export function References() {
   return (
     <section id="referenser" className="bg-[var(--section-alt)] py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-center text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+        <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-zinc-700">
           Tidigare projekt
-        </p>
-        <h2 className="mt-3 text-center text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
-          Våra uppdrag
         </h2>
+        <h3 className="mt-3 text-center text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
+          Våra uppdrag
+        </h3>
 
         <div className="mt-14">
           <ReferencesSlider

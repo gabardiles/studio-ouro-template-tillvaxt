@@ -22,7 +22,7 @@ export function Trust() {
                 key={item}
                 className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm"
               >
-                <ShieldCheck className="h-4 w-4 text-[var(--accent)]" />
+                <ShieldCheck className="h-4 w-4 text-zinc-600" />
                 {item}
               </span>
             ))}
@@ -32,13 +32,13 @@ export function Trust() {
                 key={item}
                 className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm"
               >
-                <ShieldCheck className="h-4 w-4 text-[var(--accent)]" />
+                <ShieldCheck className="h-4 w-4 text-zinc-600" />
                 {item}
               </span>
             ))}
         </div>
         {trust.insurance && (
-          <p className="mt-5 text-center text-sm text-zinc-500">
+          <p className="mt-5 text-center text-sm text-zinc-600">
             {trust.insurance}
           </p>
         )}

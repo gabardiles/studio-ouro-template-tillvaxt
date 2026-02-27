@@ -21,7 +21,7 @@ export default function AboutPage() {
     <SubpageLayout backLabel="Startsida">
       <article className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
         {/* Hero area */}
-        <p className="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+        <p className="text-sm font-semibold uppercase tracking-widest text-zinc-700">
           Om oss
         </p>
         <h1 className="mt-2 text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
@@ -72,7 +72,7 @@ export default function AboutPage() {
             {about.stats.map((stat) => (
               <div key={stat.label} className="flex-1 px-4 py-6 text-center">
                 <p className="text-2xl font-medium text-[var(--primary)] sm:text-3xl">{stat.value}</p>
-                <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-zinc-400 sm:text-xs">{stat.label}</p>
+                <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-zinc-600 sm:text-xs">{stat.label}</p>
               </div>
             ))}
           </div>
