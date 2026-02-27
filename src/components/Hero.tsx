@@ -43,7 +43,7 @@ export function Hero() {
         </div>
 
         {/* Headline */}
-        <h1 className="mt-6 max-w-3xl text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="mt-6 max-w-3xl break-words text-4xl font-medium leading-[1.05] tracking-tight text-white hyphens-auto sm:text-5xl md:text-6xl lg:text-7xl">
           {hero.headline}
         </h1>
 

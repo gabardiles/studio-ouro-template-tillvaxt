@@ -2,7 +2,8 @@
 
 /**
  * Contact – Google Maps embed, contact info rows, optional form.
- * All content from client.config.ts.
+ * All content from client.config.ts. Map: uses contact.mapUrl when set,
+ * otherwise derives embed from seo.geo (lat/lng) so scraped geo data drives the map.
  * Each field renders only when not null or empty string.
  */
 
@@ -14,8 +15,17 @@ function hasValue(v: string | null | undefined): v is string {
   return v != null && v.trim() !== "";
 }
 
+/** Embed URL from config: explicit contact.mapUrl or derived from seo.geo (lat/lng). */
+function getMapEmbedUrl(): string | null {
+  if (hasValue(client.contact.mapUrl)) return client.contact.mapUrl;
+  const { lat, lng } = client.seo.geo;
+  if (lat && lng) return `https://www.google.com/maps?q=${lat},${lng}&z=14&output=embed`;
+  return null;
+}
+
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const mapUrl = getMapEmbedUrl();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,11 +45,11 @@ export function Contact() {
         <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left column: map + contact info */}
           <div className="space-y-8">
-            {/* Google Maps embed */}
-            {hasValue(client.contact.mapUrl) && (
+            {/* Google Maps embed: contact.mapUrl or derived from seo.geo (scraped data) */}
+            {mapUrl && (
               <div className="overflow-hidden rounded-lg border border-zinc-200 shadow-sm">
                 <iframe
-                  src={client.contact.mapUrl}
+                  src={mapUrl}
                   width="100%"
                   height="260"
                   style={{ border: 0 }}

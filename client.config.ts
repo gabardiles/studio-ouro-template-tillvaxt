@@ -288,11 +288,12 @@ export const client = {
   ],
 
   contact: {
-    phone: "",
-    email: "",
-    address: null,
-    hours: null,
+    phone: "031-123 45 67",
+    email: "info@harrydavvs.se",
+    address: "Exempelgatan 1, 433 00 Härryda",
+    hours: "Mån–Fre 08:00–17:00, Lör 09:00–13:00",
     emergency: "Vid akuta VVS-ärenden — ring oss direkt. Vi svarar inom 2 timmar.",
+    // Map: set to a full Google Maps embed URL to override. Else map is derived from seo.geo (lat/lng) — scraped data maps here.
     mapUrl: null,
     formEnabled: true,
   },

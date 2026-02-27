@@ -33,7 +33,7 @@ A **GitHub template repository** for starting new client projects. Clone this re
 ## Project structure
 
 ```
-studio-ouro-template-bas/
+portal-template-tillvaxt/
 ├── public/                 # Static assets (images, favicon, etc.)
 ├── src/
 │   └── app/                # Next.js App Router
@@ -76,3 +76,4 @@ studio-ouro-template-bas/
 - Keep dependencies minimal; add libraries only when needed.
 - Use the existing `@/*` path alias for imports from `src/`.
 - Root layout and `globals.css` define the global look; customize there first for branding.
+- **Scraped / external data**: Map into `client.config.ts`. Contact and map come from `contact` (phone, email, address, hours, `mapUrl`) and `seo.geo` (lat, lng, city, region, country). If `contact.mapUrl` is empty, the map embed is derived from `seo.geo`, so scraped geo is enough to show the map.

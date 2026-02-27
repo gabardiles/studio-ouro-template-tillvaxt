@@ -5,15 +5,14 @@
 
 import { client } from "../../client.config";
 
-const baseUrl = `https://${client.meta.domain}`;
-
 /** LocalBusiness (or subtype e.g. Plumber) schema for rich results and knowledge panel. */
 export function getLocalBusinessSchema(): object {
+  const baseUrl = client.meta.domain ? `https://${client.meta.domain}` : undefined;
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": client.seo.businessType,
     name: client.brand.name,
-    url: baseUrl,
+    ...(baseUrl && { url: baseUrl }),
     telephone: client.contact.phone,
     email: client.contact.email,
     address: {

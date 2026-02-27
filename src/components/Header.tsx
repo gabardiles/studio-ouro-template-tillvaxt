@@ -68,11 +68,14 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-[72px] sm:px-6">
         <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight text-zinc-900">
           {client.brand.logo ? (
-            <img
-              src={client.brand.logo}
-              alt={client.brand.name}
-              className="h-8 w-auto"
-            />
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element -- logo may be SVG or external URL */}
+              <img
+                src={client.brand.logo}
+                alt={client.brand.name}
+                className="h-8 w-auto"
+              />
+            </>
           ) : (
             <span className="font-display font-bold text-xl">
               {client.brand.name}

@@ -124,9 +124,10 @@ export function ReferencesSlider({
             <button
               key={i}
               type="button"
+              role="tab"
+              aria-selected={i === activeIndex}
               onClick={() => goTo(i)}
               aria-label={`Gå till kort ${i + 1}`}
-              aria-selected={i === activeIndex}
               className="h-2.5 w-2.5 shrink-0 rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2"
               style={{
                 backgroundColor: i === activeIndex ? "var(--accent)" : "#a1a1aa",

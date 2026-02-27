@@ -107,7 +107,7 @@ export default async function ServicePage({ params }: Props) {
               </span>
             </div>
 
-            <h1 className="mx-auto mt-5 max-w-2xl text-3xl font-medium leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h1 className="mx-auto mt-5 max-w-2xl break-words text-3xl font-medium leading-tight tracking-tight text-white hyphens-auto sm:text-4xl md:text-5xl">
               {service.pageTitle}
             </h1>
 
