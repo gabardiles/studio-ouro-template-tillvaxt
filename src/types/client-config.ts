@@ -8,6 +8,11 @@ export interface Section {
   body: string;
 }
 
+export interface Highlight {
+  title: string;
+  description: string;
+}
+
 export interface Service {
   title: string;
   description: string;
@@ -18,7 +23,7 @@ export interface Service {
   preamble: string;
   heroImage: string | null;
   sections: Section[];
-  highlights: string[];
+  highlights: Highlight[];
   faq: FaqItem[];
 }
 
