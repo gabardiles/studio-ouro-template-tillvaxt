@@ -68,7 +68,7 @@ export function About() {
         {/* Stats bar – full container width */}
         {about.stats.length > 0 && (
           <div className="mt-14 flex flex-wrap items-center divide-x divide-zinc-200 rounded-lg border border-zinc-200 bg-white sm:flex-nowrap">
-            {about.stats.map((stat) => (
+            {(about.stats as Array<{ label: string; value: string }>).map((stat) => (
               <div key={stat.label} className="flex-1 basis-1/2 px-4 py-6 text-center sm:basis-0">
                 <p className="text-2xl font-medium text-[var(--primary)] sm:text-3xl">{stat.value}</p>
                 <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-zinc-600 sm:text-xs">{stat.label}</p>
