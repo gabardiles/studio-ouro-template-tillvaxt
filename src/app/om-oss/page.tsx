@@ -69,7 +69,7 @@ export default function AboutPage() {
         {/* Stats bar */}
         {about.stats.length > 0 && (
           <div className="mt-10 flex items-center divide-x divide-zinc-200 rounded-lg border border-zinc-200 bg-white">
-            {(about.stats as Array<{ label: string; value: string }>).map((stat) => (
+            {about.stats.map((stat) => (
               <div key={stat.label} className="flex-1 px-4 py-6 text-center">
                 <p className="text-2xl font-medium text-[var(--primary)] sm:text-3xl">{stat.value}</p>
                 <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-zinc-600 sm:text-xs">{stat.label}</p>
@@ -80,7 +80,7 @@ export default function AboutPage() {
 
         {/* Extended sections */}
         <div className="mt-14 space-y-10">
-          {(about.sections as Array<{ heading: string; body: string }>).map((section) => (
+          {about.sections.map((section) => (
             <div key={section.heading}>
               <h2 className="text-xl font-medium text-zinc-900 sm:text-2xl">
                 {section.heading}
