@@ -100,7 +100,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="relative z-10 px-6 py-20 text-center sm:px-12 sm:py-28 md:py-32">
             <div className="mx-auto flex items-center justify-center gap-2.5">
               <div className="flex h-10 w-10 items-center justify-center rounded-md bg-white/10 text-white backdrop-blur-sm">
-                <ServiceIcon name={service.icon} />
+                <ServiceIcon name={service.icon ?? ''} />
               </div>
               <span className="text-sm font-semibold uppercase tracking-widest text-white/70">
                 Tjänst
