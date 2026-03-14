@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ImageIcon, ArrowRight } from "lucide-react";
 import { client } from "../../client.config";
+import { StatsBar } from "./StatsBar";
 
 export function About() {
   const { about } = client;
@@ -34,7 +35,7 @@ export function About() {
 
             <Link
               href="/om-oss"
-              className="mt-6 inline-flex items-center gap-1.5 text-base font-medium text-zinc-700 transition-colors hover:text-zinc-900"
+              className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-[var(--accent)]/30 transition hover:brightness-110"
             >
               Läs mer om oss <ArrowRight className="h-4 w-4" />
             </Link>
@@ -65,17 +66,8 @@ export function About() {
           </div>
         </div>
 
-        {/* Stats bar – full container width */}
-        {about.stats.length > 0 && (
-          <div className="mt-14 flex flex-wrap items-center divide-x divide-zinc-200 rounded-lg border border-zinc-200 bg-white sm:flex-nowrap">
-            {about.stats.map((stat) => (
-              <div key={stat.label} className="flex-1 basis-1/2 px-4 py-6 text-center sm:basis-0">
-                <p className="text-2xl font-medium text-[var(--primary)] sm:text-3xl">{stat.value}</p>
-                <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-zinc-600 sm:text-xs">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        )}
+        {/* Stats bar – animated count-up on scroll */}
+        <StatsBar stats={about.stats} />
       </div>
     </section>
   );

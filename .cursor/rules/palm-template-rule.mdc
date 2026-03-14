@@ -1,0 +1,74 @@
+---
+description: Architecture rules for the studio-ouro-template-palm. Prevents breaking the portal–template contract.
+alwaysApply: true
+---
+
+# Palm Template — Design & Config Rules
+
+This template is auto-deployed by the Ouro Portal. The portal generates `client.config.ts` and pushes it here on every deploy. Breaking the config contract breaks every live client site.
+
+## The Contract: `src/types/client-config.ts`
+
+This is the only file that connects the portal to the template. Rules:
+
+- **Never remove or rename a field.** The portal will still send the old name and the site will break silently.
+- **Never make an optional field required.** Config values can be null — always handle it.
+- **Adding new optional fields is safe.** Use `field?: type | null` and provide a fallback in the component.
+
+## Config Fields Reference
+
+Key nullable fields the portal populates from intake + scrape data:
+
+```ts
+contact.address    // from intake form — may be null if not submitted
+contact.hours      // from web scrape — may be null if not found
+contact.emergency  // from web scrape — may be null if not found
+contact.mapUrl     // auto-generated from address — null if no address
+contact.phone      // from project record
+contact.email      // from project record
+
+reviews.score      // parsed from "4.8/5 på Google..." — may be null
+reviews.count      // parsed from review string — fallback to "0"
+reviews.show       // true if score or testimonials exist
+
+trust.certifications  // string[] — may be empty []
+
+about.stats        // { value, label }[] — may be empty []
+about.teamSize     // may be null
+about.founded      // may be null
+```
+
+## Component Rules
+
+Always guard nullable fields before rendering:
+
+```tsx
+// ❌ BAD — crashes if address is null
+<p>{client.contact.address.toUpperCase()}</p>
+
+// ✅ GOOD
+{client.contact.address && <p>{client.contact.address}</p>}
+
+// ✅ GOOD with fallback
+<p>{client.contact.hours ?? "Kontakta oss för öppettider"}</p>
+```
+
+## What Is Safe to Edit
+
+| Area | Safe? |
+|---|---|
+| Component layout, spacing, Tailwind classes | ✅ Yes |
+| Typography, colors, gradients, shadows | ✅ Yes |
+| Adding new sections that use existing config fields | ✅ Yes |
+| Animations, hover states, transitions | ✅ Yes |
+| `src/types/client-config.ts` — adding optional fields | ✅ Yes |
+| `src/types/client-config.ts` — removing/renaming fields | ❌ No |
+| `client.config.ts` — editing directly | ❌ No (overwritten on every deploy) |
+
+## Data Flow (do not change)
+
+```
+Portal (assembleConfig) → pushes client.config.ts → GitHub → Vercel build
+```
+
+`client.config.ts` is overwritten every time the portal pushes a config update or deploys a new site. Any manual edits to it will be lost.

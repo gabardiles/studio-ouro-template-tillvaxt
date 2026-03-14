@@ -35,8 +35,45 @@ export function SubpageLayout({
         {children}
 
         {/* CTA banner */}
-        <section className="bg-[var(--primary)] py-16 sm:py-20">
-          <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
+        <section
+          className="relative overflow-hidden py-16 sm:py-20"
+          style={{ backgroundColor: client.brand.primaryColor }}
+        >
+          {/* Animated blobs */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+            {/* Bright primary blob – top left drift */}
+            <div
+              className="absolute -top-24 left-[5%] h-[420px] w-[420px] rounded-full"
+              style={{
+                backgroundColor: client.brand.primaryColor,
+                filter: "blur(72px) brightness(1.6)",
+                opacity: 0.65,
+                animation: "cta-blob-1 11s ease-in-out infinite",
+              }}
+            />
+            {/* Accent glow blob – top right */}
+            <div
+              className="absolute -top-10 right-[8%] h-[300px] w-[300px] rounded-full"
+              style={{
+                backgroundColor: client.brand.accentColor,
+                filter: "blur(80px)",
+                opacity: 0.28,
+                animation: "cta-blob-2 14s ease-in-out infinite",
+              }}
+            />
+            {/* Dark depth blob – bottom center */}
+            <div
+              className="absolute -bottom-28 left-[30%] h-[460px] w-[460px] rounded-full"
+              style={{
+                backgroundColor: "rgba(0,0,0,0.6)",
+                filter: "blur(90px)",
+                opacity: 0.55,
+                animation: "cta-blob-3 9s ease-in-out infinite",
+              }}
+            />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
             <h2 className="text-2xl font-medium text-white sm:text-3xl">
               Redo att komma igång?
             </h2>

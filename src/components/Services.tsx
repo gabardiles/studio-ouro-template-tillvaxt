@@ -8,22 +8,32 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { client } from "../../client.config";
 import { ServiceIcon } from "./ServiceIcons";
+import { ServicesSlider } from "./ServicesSlider";
 
 export function Services() {
   return (
-    <section id="tjanster" className="py-20 sm:py-28">
+    <section id="tjanster" className="bg-zinc-100 py-14 sm:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-zinc-700">
-          Vad vi erbjuder
-        </h2>
-        <h3 className="mt-3 text-center text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
-          Våra tjänster
-        </h3>
-        <p className="mx-auto mt-4 max-w-xl text-center text-zinc-600">
-          Vi erbjuder ett brett utbud av tjänster för hem och fastighet.
-        </p>
-
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {client.services.length > 3 ? (
+          /* Slider with its own left-aligned heading + arrows */
+          <ServicesSlider
+            services={client.services}
+            primaryColor={client.brand.primaryColor}
+            accentColor={client.brand.accentColor}
+          />
+        ) : (
+          /* Standard centered heading + grid for 3 or fewer */
+          <>
+          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-zinc-700">
+            Vad vi erbjuder
+          </h2>
+          <h3 className="mt-3 text-center text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
+            Våra tjänster
+          </h3>
+          <p className="mx-auto mt-4 max-w-xl text-center text-zinc-600">
+            Vi erbjuder ett brett utbud av tjänster för hem och fastighet.
+          </p>
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {client.services.map((service) => (
             <Link
               key={service.slug}
@@ -73,7 +83,9 @@ export function Services() {
               </div>
             </Link>
           ))}
-        </div>
+          </div>
+          </>
+        )}
       </div>
     </section>
   );

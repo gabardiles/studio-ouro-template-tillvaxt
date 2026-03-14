@@ -22,7 +22,10 @@ export function Footer() {
   const hasSocial = client.social.facebook || client.social.instagram;
 
   return (
-    <footer className="bg-[var(--primary)] text-zinc-300">
+    <footer
+      className="text-zinc-300"
+      style={{ backgroundColor: `color-mix(in srgb, ${client.brand.primaryColor} 60%, black)` }}
+    >
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>

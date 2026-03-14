@@ -17,6 +17,7 @@ export interface Reference {
   title: string;
   description: string;
   image?: string | null;
+  images?: string[] | null;
 }
 
 export interface Service {

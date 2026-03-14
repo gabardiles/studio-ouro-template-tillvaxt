@@ -194,11 +194,11 @@ export default async function ServicePage({ params }: Props) {
             <h2 className="text-center text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl">
               Det här ingår
             </h2>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 flex flex-wrap justify-center gap-6">
               {service.highlights.map((item) => (
                 <div
                   key={item.title}
-                  className="flex gap-4 rounded-lg border border-zinc-100 bg-white p-6 shadow-sm"
+                  className="flex w-full gap-4 rounded-lg border border-zinc-100 bg-white p-6 shadow-sm sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
                 >
                   <CheckCircle className="mt-0.5 h-6 w-6 shrink-0 text-[var(--accent)]" />
                   <div>
